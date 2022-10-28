@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 import './App.css';
 import Card from './components/Card';
+import UserCard from './components/UserCard';
 
 const data = [
   {
@@ -33,6 +34,26 @@ const data = [
    },
 ];
 
+const userData = [
+   {
+      name: "Kshitij",
+      age: 20,
+      designation: "Developer",
+      url:"https://www.pngkey.com/png/detail/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png",
+   },
+   {
+      name: "Ashu",
+      age: 20,
+      designation: "Developer",
+      url:"https://www.pngkey.com/png/detail/114-1149878_setting-user-avatar-in-specific-size-without-breaking.png",
+   },
+   {
+      name: "Dhruv",
+      age: 20,
+      designation: "Developer",
+      url:"",
+   },
+];
 function App() {
   const title = "Hey lets get Started";
   return (
@@ -49,6 +70,16 @@ function App() {
           </div>
         );
       })}
+      </div>
+      <div className='row'>
+      {
+         userData.map((val) =>{
+            return (
+            <div className = "col-12 col-sm-6 p-3">
+               <UserCard {...val} />
+          </div>
+            );
+        })}
      </div>
     </div>
   );
