@@ -1,7 +1,6 @@
 // // import logo from "./logo.svg";
 // import "./App.css";
 // import React from "react";
-
 // function App() {
 //   const [data, setdata] = React.useState(
 //     localStorage.getItem("items")
@@ -9,7 +8,6 @@
 //       : []
 //   );
 //   const [txt, setText] = React.useState("");
-
 //   const handleSubmit = () => {
 //     if (txt !== "") {
 //       var d = data.concat(txt);
@@ -32,7 +30,6 @@
 //     </div>
 //   );
 // }
-
 // export default App;
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -45,14 +42,59 @@ import Rough from "./routes/Rough";
 import Header from "./components/Header";
 
 function App() {
+  const userData = [
+    {
+      name: "Kshitij Shishodia",
+      age: 21,
+      designation: "Full Stack Dev",
+      url: "https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg",
+      socialMedia: {
+        fb: "https://www.google.co.in/",
+        google: "https://www.google.co.in/",
+        ig: "https://www.google.co.in/",
+        ld: "https://www.google.co.in/",
+      },
+      _id: "1",
+    },
+    {
+      name: "Simran Shishodia",
+      age: 22,
+      designation: "Analyst",
+      url: "https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg",
+      socialMedia: {
+        fb: "https://www.google.co.in/",
+        google: "https://www.google.co.in/",
+        ig: "https://www.google.co.in/",
+        ld: "https://www.google.co.in/",
+      },
+      _id: "2",
+    },
+    {
+      name: "Dhruv Shishodia",
+      age: 18,
+      designation: "Hard Coder",
+      socialMedia: {
+        fb: "https://www.google.co.in/",
+        google: "https://www.google.co.in/",
+        ig: "https://www.google.co.in/",
+        ld: "https://www.google.co.in/",
+      },
+      _id: "3",
+    },
+  ];
   return (
     <BrowserRouter>
-    <Header />
+      <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+       
+        <Route path="/" element={<Home userData={userData} />} />
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Error404 />} />
-        <Route path="/userDetails/:id" element={<UserDetails />} />
+        
+        <Route
+          path="/userDetails/:id"
+          element={<UserDetails entireUserDatabase={userData} />}
+        />
         <Route path="/signup" element={<Signup />} />
         <Route path="/r" element={<Rough />} />
         {/* <Route path="/" element={<h1>Page</h1>}>
@@ -64,5 +106,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;

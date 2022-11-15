@@ -4,28 +4,28 @@ import ProductCard from "../components/ProductCard";
 import UserCard from "../components/UserCard";
 import { Grid } from "@mui/material";
 
-const userData = [
-  {
-    name: "Kshitij Shishodia",
-    age: 21,
-    designation: "Full Stack Dev",
-    url: "https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg",
-    _id: 1,
-  },
-  {
-    name: "Simran Shishodia",
-    age: 22,
-    designation: "Analyst",
-    url: "https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg",
-    _id: 2,
-  },
-  {
-    name: "Dhruv Shishodia",
-    age: 18,
-    designation: "Hard Coder",
-    _id: 3,
-  },
-];
+// const userData = [
+//   {
+//     name: "Kshitij Shishodia",
+//     age: 21,
+//     designation: "Full Stack Dev",
+//     url: "https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg",
+//     _id: 1,
+//   },
+//   {
+//     name: "Simran Shishodia",
+//     age: 22,
+//     designation: "Analyst",
+//     url: "https://cdn5.vectorstock.com/i/1000x1000/51/99/icon-of-user-avatar-for-web-site-or-mobile-app-vector-3125199.jpg",
+//     _id: 2,
+//   },
+//   {
+//     name: "Dhruv Shishodia",
+//     age: 18,
+//     designation: "Hard Coder",
+//     _id: 3,
+//   },
+// ];
 const data = [
   {
     url: "https://economictimes.indiatimes.com/thumb/msid-91306613,width-1599,height-1067,resizemode-4,imgsize-77120/apple-iphone-.jpg?from=mdr",
@@ -59,7 +59,8 @@ function Home(props) {
   };
   //  useParams();
   // console.log(useParams());
-  console.log(window.location);
+  console.log(props);
+  // console.log(window.location);
   return (
     <>
       <Link to="/about">Go to about</Link>
@@ -81,10 +82,10 @@ function Home(props) {
         })}
       </Grid>
       <Grid container>
-        {userData.map((val) => {
+      {props.userData.map((val, ind) =>  {
           return (
             <Grid item xs={12} sm={6}>
-              <UserCard {...val} />
+              <UserCard {...val} ind={ind} />
             </Grid>
           );
         })}
