@@ -12,6 +12,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
+import { connect } from "react-redux";
+import { Badge } from "@mui/material";
+import { MailLock } from "@mui/icons-material";
 
 import { useNavigate } from "react-router-dom";
 
@@ -51,6 +54,13 @@ function DrawerAppBar(props) {
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem key="notification" disablePadding>
+          <ListItemButton sx={{ textAlign: "center" }}>
+            <ListItemText
+              primary={`${props.noOfNotifications} notifications`}
+            />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );
@@ -85,6 +95,9 @@ function DrawerAppBar(props) {
                 {item.name}
               </Button>
             ))}
+            <Badge badgeContent={props.noOfNotifications} color="secondary">
+              <MailLock color="action" />
+            </Badge>
           </Box>
         </Toolbar>
       </AppBar>
@@ -111,4 +124,10 @@ function DrawerAppBar(props) {
   );
 }
 
-export default DrawerAppBar;
+const mapStateToProps = (state) => ({
+  noOfNotifications: state.home.value,
+});
+
+export default connect(mapStateToProps)(DrawerAppBar);
+
+// export default DrawerAppBar;
